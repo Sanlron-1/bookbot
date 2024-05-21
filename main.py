@@ -1,15 +1,18 @@
 
 def main():
-    with open("books/frankenstein.txt") as f:
+    file = "books/frankenstein.txt"
+    with open(file) as f:
         file_contents = f.read()
-        print(file_contents)
-        print(countWords(file_contents))
-        
-    
+              
+    wordcount = countWords(file_contents)
     output = countLetters(file_contents)
     output.sort(reverse=True, key=sort_on)
+
+    print(f'--- Begin report of {file} ---')
+    print(f'{wordcount} words found in the document\n')
     for item in output:
-        print(item)
+        #print(f'{item.name}')
+        print(f'The %s character was found %d times.' % (item["name"], item["num"]))
         #...
 
 def countWords(input):
